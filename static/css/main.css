@@ -1,18 +1,29 @@
 body {
+margin: 0;
 background-color: white;
 }
 
-
-.header__img{
-height:64px;
-width: 100px;
+*,
+*:before,
+*:after {
+box-sizing: border-box;
 }
 
 header {
 position: sticky;
-background-color: white;
+background-color: grey;
 top: 0;
 z-index: 1000;
+}
+
+.header__img{
+height: 64px;
+width: 128px;
+}
+
+.footer_img{
+height: 200px;
+width: 200px;
 }
 
 
