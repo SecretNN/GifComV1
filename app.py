@@ -1,7 +1,16 @@
 import flask
 from flask import render_template, Flask
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask (__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///GifComV1.db'
+db = SQLAlchemy(app)
+
+class Gifs1(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(70), nullable=False)
+    text = db.Column(db.Text, nullable=False)
 
 @app.route('/main')
 @app.route('/')
