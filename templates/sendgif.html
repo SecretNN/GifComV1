@@ -6,4 +6,11 @@
 
 {%  block content %}
 <h1>Відправити гіфку</h1>
+
+<form method="post" class="form-control">
+    <input type="text" name="title" placeholder="Назва" class="form-control"><br>
+    <input type="file" name="Gifs" placeholder="Закиньте гіф" class="form-control"><br>
+    <button class="btn btn--success" type="send">Відправити</button>
+</form>
+
 {%  endblock %}

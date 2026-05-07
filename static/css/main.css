@@ -9,9 +9,15 @@ background-color: white;
 box-sizing: border-box;
 }
 
+header, footer {
+padding: 20px;
+background-color: white;
+}
+
+
 header {
 position: sticky;
-background-color: blue;
+background-color: white;
 top: 0;
 z-index: 1000;
 }
@@ -27,19 +33,14 @@ width: 200px;
 }
 
 
-header, footer {
-padding: 20px;
-background-color: grey;
-}
 
 .page {
-overflow:hidden;
 display: flex;
 flex-direction: column;
 min-height: 100vh;
 }
 
-.gifs {
+.content {
 max-width: 100vh;
 margin: 0 auto;
 padding: 40px 20px;
