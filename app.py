@@ -64,7 +64,7 @@ def video2gif(file_storage):
                 return byte_io.getvalue()
 
         with VideoFileClip(input_path) as clip:
-            clip.resize(width=480).write_gif(output_path, fps=10, logger=None)
+            clip.resize(width=480).write_gif(output_path, fps=12, logger=None)
 
         with open(output_path, "rb") as f:
             gif_bytes = f.read()
