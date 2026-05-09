@@ -47,3 +47,32 @@ padding: 40px 220px;
 
 flex: 1 1 auto;
 }
+
+
+.gif-kachka {
+position: relative;
+overflow: hidden;
+}
+
+.download-gifk {
+position: absolute;
+top: 50%
+left: 50%
+transform: translate(-50%,-50%);
+background-color: rgba(0, 0, 0, 0.7);
+padding: 10pxx 20px;
+border-radius:5px;
+color: white;
+text-decoration: none;
+opacity: 0;
+transition: opacity 0.3s ease;
+z-index: 10;
+}
+/* hover для качки гіф*/
+.gif-kachka:hover .download-gifk {
+opacity: 1;
+}
+/* затемняю*/
+.gif-kachka:hover img{
+filter: brightness(70%);
+}

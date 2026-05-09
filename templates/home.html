@@ -10,6 +10,12 @@
     <div style="border: 1px solid #ccc; padding: 10px; border-radius: 8px; width: 300px;">
         <h3>{{ item.title }}</h3>
         <img src="{{ url_for('get_gif', id=item.id) }}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 4px;">
+
+        <a href="{{ url_for('get_gif', id=item.id) }}"
+            download="{{ item.title }}.gif"
+            class="download-button">
+            Вкрасти гіф
+        </a>
     </div>
     {% endfor %}
 </div>
