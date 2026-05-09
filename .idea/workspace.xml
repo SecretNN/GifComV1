@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bd3bfa66-9d7b-4fa8-b310-998207a365f1" name="Changes" comment="">
       <change beforePath="D:/GifComV1/.idea/workspace.xml" beforeDir="false" afterPath="D:/GifComV1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="D:/GifComV1/instance/GifComV1.db" beforeDir="false" afterPath="D:/GifComV1/instance/GifComV1.db" afterDir="false" />
       <change beforePath="D:/GifComV1/static/css/main.css" beforeDir="false" afterPath="D:/GifComV1/static/css/main.css" afterDir="false" />
       <change beforePath="D:/GifComV1/templates/home.html" beforeDir="false" afterPath="D:/GifComV1/templates/home.html" afterDir="false" />
-      <change beforePath="D:/GifComV1/templates/mygif.html" beforeDir="false" afterPath="D:/GifComV1/templates/mygif.html" afterDir="false" />
-      <change beforePath="D:/GifComV1/templates/profile.html" beforeDir="false" afterPath="D:/GifComV1/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,21 +30,21 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="D:/GifComV1" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "SecretNN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SecretNN&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/SecretNN/GifComV1.git",
-    "accountId": "b3469bbf-7217-45dc-85c5-1608b38d5b2f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SecretNN/GifComV1.git&quot;,
+    &quot;accountId&quot;: &quot;b3469bbf-7217-45dc-85c5-1608b38d5b2f&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="3DJE1D9XBqcCEBezO9R9m6GgKla" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -60,6 +57,7 @@
     "Python.app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "test2",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/GifComV1/static/img"
