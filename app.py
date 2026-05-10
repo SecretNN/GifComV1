@@ -2,17 +2,67 @@ import io
 import os.path
 
 import flask
-from flask import render_template, Flask, request, redirect
+from flask import render_template, Flask, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from moviepy.editor import VideoFileClip
 from typing_extensions import reveal_type
 from flask import send_file
 from PIL import Image
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
+
 
 app = Flask (__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///GifComV1.db'
 db = SQLAlchemy(app)
+#Для Flask login
+app.secret_key = 'super-secret-key-change-me'
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+login_manager.login_view = 'login'
+#бд для акків
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(30), unique=True)
+    password = db.Column(db.String(50))
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        #чек бази
+        user = User.query.filter_by(username=username).first()
+        #правильно чи нє
+        if user and user.password == password:
+            login_user(user)
+            return redirect(url_for('home'))
+        return 'Щось не те ти ввів'
+    return render_template('login.html')
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        new_user = User(username=username, password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        login_user(new_user)
+        return redirect(url_for('home'))
+    return render_template('signup.html')
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+
+
 
 #Тута PIL не хоче дружити з moveipy, це вже крайня міра
 if not hasattr(Image, 'ANTIALIAS'):
@@ -78,6 +128,7 @@ def video2gif(file_storage):
 
 #Щоб гіф відправляти
 @app.route('/sendgif', methods=['POST', 'GET'])
+@login_required
 def sendgif():
     if request.method == 'POST':
         title = request.form.get('title')
@@ -102,6 +153,8 @@ def sendgif():
 def get_gif(id):
     item = Gifs1.query.get(id)
     return send_file(io.BytesIO(item.data), mimetype='image/gif')
+
+
 #ПУСК
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

@@ -1,0 +1,23 @@
+{%  extends 'base.html' %}
+
+{%  block title %}
+авторізація
+{%  endblock %}
+
+{%  block content %}
+<div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
+    <h2>Вхід в GifCom</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Логін</label>
+            <input type="text" name="username" class="form-control" required placeholder="Введіть ваш нікнейм">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Пароль</label>
+            <input type="password" name="password" class="form-control" required placeholder="Ваш пароль">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Увійти</button>
+    </form>
+    <p class="mt-3 text-center">Немає аккаунту? <a href="{{ url_for('signup') }}">Зареєструватися</a></p>
+</div>
+{%  endblock %}
