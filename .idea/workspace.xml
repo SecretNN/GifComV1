@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bd3bfa66-9d7b-4fa8-b310-998207a365f1" name="Changes" comment="">
       <change beforePath="D:/GifComV1/.idea/workspace.xml" beforeDir="false" afterPath="D:/GifComV1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="D:/GifComV1/app.py" beforeDir="false" afterPath="D:/GifComV1/app.py" afterDir="false" />
-      <change beforePath="D:/GifComV1/instance/GifComV1.db" beforeDir="false" afterPath="D:/GifComV1/instance/GifComV1.db" afterDir="false" />
-      <change beforePath="D:/GifComV1/static/css/main.css" beforeDir="false" afterPath="D:/GifComV1/static/css/main.css" afterDir="false" />
       <change beforePath="D:/GifComV1/templates/base.html" beforeDir="false" afterPath="D:/GifComV1/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +18,7 @@
       <list>
         <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
