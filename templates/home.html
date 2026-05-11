@@ -18,7 +18,17 @@
                 <img src="{{ url_for('static', filename='img/download_icon.png') }}" alt="" style="width: 60px; height: 60px;">
             </div>
         </a>
-    </div>
+        <!--ТУТ ТАКОЖ треба ЗАМІНИТИ Secret на нік "АДМІНА"-->
+        {% if current_user.is_authenticated and current_user.username == 'Secret'%}
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="{{ url_for('delete_gif', id=item.id) }}"
+               class="btn btn-sm btn-danger"
+                onclick="return confirm('ТОчно хочешь її викинути?)">
+                Викинути
+            </a>
+        </div>
+
+    {% endif %}</div>
     {% endfor %}
 </div>
 

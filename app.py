@@ -5,10 +5,11 @@ import flask
 from flask import render_template, Flask, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from moviepy.editor import VideoFileClip
+from sqlalchemy.sql.functions import current_user
 from typing_extensions import reveal_type
 from flask import send_file
 from PIL import Image
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 
 app = Flask (__name__)
@@ -60,6 +61,20 @@ def signup():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+#Видалити гіф (Дозволяю тільки  "Адміну"
+@app.route('/delete/<int:id>')
+@login_required
+def delete_gif(id):
+    #Замінити Secret На тої нік, який повинен бути адміном
+    if current_user.username != 'Secret':
+        return redirect(url_for('home'))
+    gif_delete = Gifs1.query.get_or_404(id)
+    try:
+        db.session.delete(gif_delete)
+        db.session.commit()
+        return redirect(url_for('home'))
+    except:
+        return "Десь помилка!1!"
 
 
 
