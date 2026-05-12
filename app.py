@@ -4,7 +4,7 @@ import os.path
 import flask
 from flask import render_template, Flask, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from moviepy.editor import VideoFileClip
+from moviepy import VideoFileClip
 from sqlalchemy.sql.functions import current_user
 from typing_extensions import reveal_type
 from flask import send_file
@@ -129,7 +129,7 @@ def video2gif(file_storage):
                 return byte_io.getvalue()
 
         with VideoFileClip(input_path) as clip:
-            clip.resize(width=480).write_gif(output_path, fps=12, logger=None)
+            clip.resized(width=480).write_gif(output_path, fps=12, logger=None)
 
         with open(output_path, "rb") as f:
             gif_bytes = f.read()
