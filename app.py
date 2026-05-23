@@ -5,6 +5,7 @@ import flask
 from flask import render_template, Flask, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from moviepy import VideoFileClip
+import moviepy as vfx
 from sqlalchemy.sql.functions import current_user
 from typing_extensions import reveal_type
 from flask import send_file
@@ -112,29 +113,32 @@ def mygif():
 def video2gif(file_storage):
     input_path = "temp_input__" + file_storage.filename
     output_path = "temp_output.gif"
-
     file_storage.save(input_path)
-
     filename = file_storage.filename.lower()
 
     try:
+        #1 Якщо це вже GIF
         if filename.endswith('.gif'):
             with open(input_path, "rb") as f:
                 return f.read()
 
-        if not filename.endswith(('.mp4', '.mov', '.avi')):
+        #2 Якщо це відео (mp4, mov, avi)
+        elif filename.endswith(('.mp4', '.mov', '.avi')):
+            with VideoFileClip(input_path) as clip:
+                clip.resized(width=480).write_gif(output_path, fps=12, logger=None)
+            with open(output_path, "rb") as f:
+                return f.read()
+
+        #3 Якщо це статична картинка (jpg, png)
+        elif filename.endswith(('.jpg', '.jpeg', '.png')):
             with Image.open(input_path) as img:
                 byte_io = io.BytesIO()
                 img.save(byte_io, format='GIF')
                 return byte_io.getvalue()
 
-        with VideoFileClip(input_path) as clip:
-            clip.resized(width=480).write_gif(output_path, fps=12, logger=None)
-
-        with open(output_path, "rb") as f:
-            gif_bytes = f.read()
-
-        return gif_bytes
+        #4 Якщо формат не підтримується
+        else:
+            raise ValueError("Unsupported file format")
 
     finally:
         if os.path.exists(input_path): os.remove(input_path)
@@ -151,7 +155,12 @@ def sendgif():
 
 
         if file and title:
-            binary_data =video2gif(file)
+            try:
+                binary_data = video2gif(file)
+            except ValueError:
+                return "Непідтримуваний формат файлу", 422
+            except Exception as e:
+                return f"Помилка обробки: {str(e)}", 500
 
             new_gif = Gifs1(title=title, data=binary_data)
             db.session.add(new_gif)
