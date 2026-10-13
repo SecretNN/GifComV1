@@ -7,7 +7,6 @@
     <list default="true" id="bd3bfa66-9d7b-4fa8-b310-998207a365f1" name="Changes" comment="">
       <change beforePath="D:/GifComV1/.idea/workspace.xml" beforeDir="false" afterPath="D:/GifComV1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="D:/GifComV1/app.py" beforeDir="false" afterPath="D:/GifComV1/app.py" afterDir="false" />
-      <change beforePath="D:/GifComV1/instance/GifComV1.db" beforeDir="false" afterPath="D:/GifComV1/instance/GifComV1.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,16 +16,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
         <option value="Dockerfile" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="D:/GifComV1" value="test1" />
+        <entry key="D:/GifComV1" value="test2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="D:/GifComV1" />
@@ -51,19 +50,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;test2&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/GifComV1/static/img&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.app.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "test1",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/GifComV1/static/img"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\GifComV1\static\img" />
@@ -122,5 +121,9 @@
       <updated>1777991571222</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Помилка при другому форматі 422 v1.12" />
+    <option name="LAST_COMMIT_MESSAGE" value="Помилка при другому форматі 422 v1.12" />
   </component>
 </project>

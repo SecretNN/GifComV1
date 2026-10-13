@@ -28,6 +28,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True)
     password = db.Column(db.String(50))
+    gifs = db.relationship('Gifs1', backref='author', lazy=True)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -88,6 +89,8 @@ class Gifs1(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(70), nullable=False)
     data = db.Column(db.LargeBinary, nullable=False)
+    file_id = db.Column(db.String(255), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 #Щоб завжди база данних була
 with app.app_context():
     db.create_all()
@@ -102,7 +105,7 @@ def home():
 @app.route('/profile')
 def profile():
     items = Gifs1.query.all()
-    return render_template('profile.html', items=items)
+    return render_template('profile.html', items=items, user=current_user)
 
 @app.route('/mygif')
 def mygif():
@@ -162,7 +165,7 @@ def sendgif():
             except Exception as e:
                 return f"Помилка обробки: {str(e)}", 500
 
-            new_gif = Gifs1(title=title, data=binary_data)
+            new_gif = Gifs1(title=title, data=binary_data, user_id=current_user.id)
             db.session.add(new_gif)
             db.session.commit()
             return  redirect('/')

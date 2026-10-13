@@ -18,6 +18,9 @@
                 <img src="{{ url_for('static', filename='img/download_icon.png') }}" alt="" style="width: 60px; height: 60px;">
             </div>
         </a>
+        <div style="margin-top: 10px; font-size: 0.9rem; color: #6c757d;">
+            <strong>{{ item.author.username }}</strong>
+        </div>
         <!--ТУТ ТАКОЖ треба ЗАМІНИТИ Secret на нік "АДМІНА"-->
         {% if current_user.is_authenticated and current_user.username == 'Secret'%}
         <div style="margin-top: 20px; text-align: center;">
