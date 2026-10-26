@@ -5,6 +5,48 @@
 {%  endblock %}
 
 {%  block content %}
-<h1>Твій профіль</h1>
-Пізніше добавлю тут функцію, щоб ти бачив які гіф кидав з цього профіля
+{% if current_user.is_authenticated %}
+<h1> Профіль {{ current_user.username }}: </h1>
+    {% if current_user.username == author.username %}
+    <div style="display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 20px; padding: 20px;">
+        {% for item in items %}
+        <div style="border: 1px solid #ccc; padding: 10px; border-radius: 8px; width: 300px;">
+            <h3>{{ item.title }}</h3>
+            <a href="{{url_for('get_gif', id=item.id)}}"
+               download="{{item.title}}.gif"
+               class="gif-kachka">
+                <img src="{{ url_for('get_gif', id=item.id) }}" class="main-gif" style="width: 100%; height: 250px;">
+
+                <div class="skachka-overlay">
+                    <img src="{{ url_for('static', filename='img/download_icon.png') }}" alt="" style="width: 60px; height: 60px;">
+                </div>
+            </a>
+            <div style="margin-top: 10px; font-size: 0.9rem; color: #6c757d;">
+                <strong>{{ item.author.username }}</strong>
+            </div>
+            <!--ТУТ ТАКОЖ треба ЗАМІНИТИ Secret на нік "АДМІНА"-->
+            {% if current_user.username == item.author.username %}
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="{{ url_for('delete_gif', id=item.id) }}"
+                   class="btn btn-sm btn-danger"
+                   onclick="return confirm('ТОчно хочешь її викинути?')">
+                    Викинути
+                </a>
+            </div>
+
+            {% endif %}
+
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div style="margin-top: 180px; text-align: center;">
+        <h1> Жодного відправленного ГІФ</h1>
+    </div>
+    {% endif %}
+{% else %}
+<div style="margin-top: 180px; text-align: center;">
+    <h1> Зареєструйся щоб бачити свій профіль</h1>
+</div>
+{% endif %}
 {%  endblock %}

@@ -52,6 +52,9 @@ def signup():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
+        user_check = User.query.filter_by(username=username).first()
+        if user_check:
+            return 'Цей нік вже зайнятий'
         new_user = User(username=username, password=password)
         db.session.add(new_user)
         db.session.commit()
@@ -101,12 +104,25 @@ with app.app_context():
 def home():
     items = Gifs1.query.all()
     return render_template('home.html', items=items)
-#профіль
-@app.route('/profile')
-def profile():
-    items = Gifs1.query.all()
-    return render_template('profile.html', items=items, user=current_user)
 
+#профіль
+@app.route('/profile/<username>')  # <-- Добавили динамическую переменную в URL
+def profile(username):
+    # 1. Ищем в базе данных пользователя по нику из адресной строки
+    profile_owner = User.query.filter_by(username=username).first()
+
+    # Если такого пользователя вообще нет в базе — отдаем ошибку 404 (Страница не найдена)
+    if not profile_owner:
+        return 'Помилка'
+
+    # 2. Выкачиваем гифки, которые принадлежат именно хозяину этого профиля (profile_owner)
+    items = Gifs1.query.filter_by(user_id=profile_owner.id).all()
+
+    # 3. Передаем в шаблон:
+    # items — гифки хозяина профиля
+    # author — сам хозяин профиля (объект profile_owner)
+    # user — текущий посетитель (current_user), он может быть и анонимом
+    return render_template('profile.html', items=items, author=profile_owner, user=current_user)
 @app.route('/mygif')
 def mygif():
     return render_template('mygif.html')
